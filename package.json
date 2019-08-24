@@ -1,12 +1,12 @@
 {
 	"name": "@dygon/sass-tools",
-	"version": "2.0.1",
+	"version": "3.0.0",
 	"description": "Everyday SASS functions.",
 	"license": "MIT",
-	  "repository": "dygon/sass-tools",
-	  "main": "_functions.sass",
-	  "keywords": [
-	    "sass",
-	    "npm"
-	  ]
+	"repository": "dygon/sass-tools",
+	"main": "_functions.sass",
+	"keywords": [
+		"sass",
+		"npm"
+	]
 }
