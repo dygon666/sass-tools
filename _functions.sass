@@ -1,0 +1,135 @@
+/*
+ * Convert pixels to rems (16px base)
+ * $size in pixels
+ */
+html
+	font-size: 14px
+
+@function calculate-rem($size)
+	$remSize: $size / 16px
+	@return $remSize * 1rem
+
+
+/*
+ * Sets font-size in rems with fallback to pixels
+ * $size is the font-size in pixels
+ */
+=font-size($size)
+    font-size: $size
+    font-size: calculate-rem($size)
+
+
+
+/***************************************/
+/* Functions by Joana 'dygon' Oliveira */
+/***************************************/
+=content-center
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+
+=abs-center($w, $h) 
+	position: absolute
+	top: 50%
+	left: 50%
+	margin-top: -$w/2
+	margin-left: -$h/2
+
+=no-select
+	user-select: none
+
+=center-left
+	left: 50%
+	transform: translateX(-50%)
+	position: absolute
+
+=center-top
+	top: 50%
+	transform: translateY(-50%)
+	position: absolute
+
+=center-block
+	display: block
+	margin: 0 auto
+	float: none
+
+=bg-contain
+	background-position: center
+	background-repeat: no-repeat
+	background-size: contain
+
+=bg-cover
+	background-position: center
+	background-repeat: no-repeat
+	background-size: cover
+
+=bg-attached
+	background-attachment: fixed
+	background-position: center
+	background-repeat: no-repeat
+	background-size: cover
+
+=ellipsis($font-size, $line-height, $lines-to-show) 
+	height: $font-size*$line-height*$lines-to-show
+	font-size: $font-size
+	line-height: $line-height
+	-webkit-line-clamp: $lines-to-show
+	-webkit-box-orient: vertical
+	overflow: hidden
+	text-overflow: ellipsis
+
+.right-align 
+	text-align: right
+
+.center-align 
+	text-align: center
+
+=do-flex($direction, $justify, $align, $wrap: nowrap)
+	display: flex
+	flex-direction: $direction
+	justify-content: $justify
+	align-content: $align
+	align-items: $align
+	flex-wrap: $wrap 	// nowrap|wrap|wrap-reverse|initial|inherit
+
+
+@mixin do-flex($direction, $justify, $align)
+	display: flex
+	flex-direction: $direction
+	justify-content: $justify
+	align-items: $align
+	
+	
+p:empty
+	display: none
+
+.full-center
+	height: 100%
+	+do-flex(column, center, center)
+
+.relative
+	position: relative
+
+=do-animation( $keyframes, $will-change, $duration: .5s, $timing-function: linear, $iteration-count: 1, $delay: 0s, $direction: normal, $fill-mode: forwards, $play-state: running )
+	will-change: $will-change
+	animation-name: $keyframes		// keyframename|none|initial|inherit
+	animation-duration: $duration	// time|initial|inherit
+	animation-timing-function: $timing-function	// linear|ease|ease-in|ease-out|ease-in-out|step-start|step-end|steps(int,start|end)|cubic-bezier(n,n,n,n)|initial|inherit
+	animation-delay: $delay			// time|initial|inherit
+	animation-direction: $direction	// normal|reverse|alternate|alternate-reverse|initial|inherit
+	animation-fill-mode: $fill-mode	// none|forwards|backwards|both|initial|inherit
+	animation-iteration-count: $iteration-count // number|infinite|initial|inherit
+	animation-play-state: $play-state // paused|running|initial|inherit
+
+
+=do-circle($s)
+	width: $s
+	height: $s
+	border-radius: $s
+	object-fit: cover
+
+=clean-ul
+	margin: 0
+	padding: 0
+	list-style-type: none
